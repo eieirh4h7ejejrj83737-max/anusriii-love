@@ -1,41 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>For Anusrii 💖</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
   <style>
     body {
-      background: #ffe6f0;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      padding-top: 60px;
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
     }
+
     .card {
-      background: white;
+      background: rgba(255, 255, 255, 0.2);
       padding: 30px;
       border-radius: 20px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      color: white;
+      max-width: 350px;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.5s ease;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
-    button {
-      padding: 10px 20px;
-      margin: 10px;
-      border-radius: 20px;
-      border: none;
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
       font-size: 16px;
-      cursor: pointer;
+      line-height: 1.6;
     }
-    .yes { background: #ff5fa2; color: white; }
-    .no { background: #ccc; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 22px;
+      animation: float 6s infinite ease-in;
+    }
+
+    @keyframes float {
+      0% { bottom: -10%; opacity: 0; }
+      50% { opacity: 1; }
+      100% { bottom: 110%; opacity: 0; }
+    }
   </style>
 </head>
+
 <body>
+
   <div class="card">
-    <h2>Hey Anusrii 💕</h2>
-    <p>I made this just for you…  
-    Will you always stay in my heart?</p>
-    <button class="yes" onclick="alert('You just made me the happiest 😭💖')">Yes</button>
-    <button class="no" onclick="alert('Try again 😌')">No</button>
+    <h1>Anusrii 💕</h1>
+    <p>
+      This little page exists for one reason only —<br>
+      to remind you how special you are 🌸<br><br>
+      Always.
+    </p>
   </div>
+
+  <div class="heart" style="left: 20%;">💗</div>
+  <div class="heart" style="left: 50%;">💖</div>
+  <div class="heart" style="left: 80%;">💞</div>
+
 </body>
 </html>
