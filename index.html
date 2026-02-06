@@ -1,78 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For Anusrii 💖</title>
+<meta charset="UTF-8">
+<title>For Anusrii 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
-      overflow: hidden;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-    .card {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      color: white;
-      max-width: 350px;
-      backdrop-filter: blur(10px);
-      animation: fadeIn 1.5s ease;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
-    h1 {
-      margin-bottom: 10px;
-    }
+/* INTRO SCREEN */
+.intro {
+  text-align: center;
+  color: #fff;
+}
 
-    p {
-      font-size: 16px;
-      line-height: 1.6;
-    }
+.intro h1 {
+  font-size: 22px;
+  margin-bottom: 30px;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
 
-    .heart {
-      position: fixed;
-      font-size: 22px;
-      animation: float 6s infinite ease-in;
-    }
+button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    @keyframes float {
-      0% { bottom: -10%; opacity: 0; }
-      50% { opacity: 1; }
-      100% { bottom: 110%; opacity: 0; }
-    }
-  </style>
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noBtn {
+  background: white;
+  color: #ff4d6d;
+  position: relative;
+}
+
+/* LOVE PAGE */
+.love {
+  display: none;
+  text-align: center;
+  color: white;
+  max-width: 350px;
+  padding: 25px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1.5s ease;
+}
+
+.love h2 {
+  margin-top: 0;
+}
+
+.love p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* HEARTS */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 6s infinite ease-in;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1>Anusrii 💕</h1>
-    <p>
-      This little page exists for one reason only —<br>
-      to remind you how special you are 🌸<br><br>
-      Always.
-    </p>
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <h1>Hey! I made something for you 💕<br>Do you wanna see?</h1>
+  <div class="buttons">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
   </div>
+</div>
 
-  <div class="heart" style="left: 20%;">💗</div>
-  <div class="heart" style="left: 50%;">💖</div>
-  <div class="heart" style="left: 80%;">💞</div>
+<!-- LOVE PAGE -->
+<div class="love" id="love">
+  <h2>Anusrii 💖</h2>
+  <p>
+    This little website exists for one reason only —<br>
+    to remind you how special you are to me 🌸<br><br>
+    No matter the distance,<br>
+    no matter the time,<br>
+    you will always be someone very important 💞
+  </p>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const intro = document.getElementById("intro");
+const love = document.getElementById("love");
+
+// Move NO button
+noBtn.addEventListener("mouseover", () => {
+  noBtn.style.position = "absolute";
+  noBtn.style.top = Math.random() * 80 + "%";
+  noBtn.style.left = Math.random() * 80 + "%";
+});
+
+// YES click
+yesBtn.addEventListener("click", () => {
+  intro.style.display = "none";
+  love.style.display = "block";
+  createHearts();
+});
+
+// Hearts generator
+function createHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }, 400);
+}
+</script>
 
 </body>
 </html>
