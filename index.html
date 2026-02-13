@@ -2,230 +2,168 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Rose Day Surprise 🌹</title>
+<title>For Anusrii 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;font-family:'Poppins',sans-serif}
-
-body{
-  margin:0;
-  height:100vh;
-  background:linear-gradient(135deg,#ff5f7e,#ff9a9e);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-  color:white;
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Screen card */
-.screen{
-  display:none;
-  text-align:center;
-  max-width:380px;
-  padding:25px;
-  background:rgba(255,255,255,0.18);
-  border-radius:20px;
-  backdrop-filter:blur(12px);
-  animation:fadeIn .8s ease;
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-.active{display:block}
-
-button{
-  padding:10px 22px;
-  border:none;
-  border-radius:25px;
-  font-size:15px;
-  cursor:pointer;
-  margin:8px;
+/* INTRO SCREEN */
+.intro {
+  text-align: center;
+  color: #fff;
 }
 
-.primary{background:#ff2e63;color:white}
-.secondary{background:white;color:#ff2e63}
-
-/* Gifts */
-.gifts{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
-.gift{
-  background:rgba(255,255,255,0.3);
-  padding:15px;
-  border-radius:15px;
-  cursor:pointer;
-  font-size:24px;
-  transition:.3s;
-}
-.gift:hover{transform:scale(1.2)}
-
-/* Floating elements */
-.float{
-  position:fixed;
-  bottom:-20px;
-  font-size:22px;
-  animation:float 7s linear infinite;
+.intro h1 {
+  font-size: 22px;
+  margin-bottom: 30px;
 }
 
-@keyframes float{
-  0%{transform:translateY(0);opacity:0}
-  30%{opacity:1}
-  100%{transform:translateY(-120vh);opacity:0}
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
-/* Typing text */
-#typed{
-  font-weight:500;
-  min-height:70px;
+button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-/* Fireworks canvas */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  pointer-events:none;
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
 }
 
-/* Countdown */
-#count{
-  font-size:18px;
-  margin-top:10px;
+#noBtn {
+  background: white;
+  color: #ff4d6d;
+  position: relative;
 }
 
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
+/* LOVE PAGE */
+.love {
+  display: none;
+  text-align: center;
+  color: white;
+  max-width: 350px;
+  padding: 25px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1.5s ease;
+}
+
+.love h2 {
+  margin-top: 0;
+}
+
+.love p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* HEARTS */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 6s infinite ease-in;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="fireworks"></canvas>
-
-<audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-</audio>
-
-<!-- Screen 1 -->
-<div class="screen active" id="s1">
-  <h2>🌹 Rose Day Surprise 🌹</h2>
-  <p>Tap to begin</p>
-  <button class="primary" onclick="start()">Start</button>
-</div>
-
-<!-- Screen 2 -->
-<div class="screen" id="s2">
-  <h2>Question 😊</h2>
-  <p>Do you like surprises?</p>
-  <button class="primary" onclick="next(3)">Yes</button>
-  <button class="secondary" onclick="moveBtn(this)">No</button>
-</div>
-
-<!-- Screen 3 -->
-<div class="screen" id="s3">
-  <h2>🌹 Accept this rose?</h2>
-  <button class="primary" onclick="next(4)">Accept</button>
-</div>
-
-<!-- Screen 4 Gifts -->
-<div class="screen" id="s4">
-  <h2>Open your gifts 🎁</h2>
-  <div class="gifts">
-    <div class="gift" onclick="gift('🌹 A rose filled with care!')">🌹</div>
-    <div class="gift" onclick="gift('🍫 Chocolates for sweet smiles!')">🍫</div>
-    <div class="gift" onclick="gift('💍 A promise of kindness & joy!')">💍</div>
-    <div class="gift" onclick="gift('🎶 A melody of happy memories!')">🎶</div>
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <h1>
+    I made something special for Valentine’s Day 💌<br>
+    Will you be my Valentine?
+  </h1>
+  <div class="buttons">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
   </div>
-  <button class="primary" onclick="next(5)">Continue</button>
 </div>
 
-<!-- Screen 5 Final -->
-<div class="screen" id="s5">
-  <h2 id="typed"></h2>
-  <div id="count"></div>
+<!-- LOVE PAGE -->
+<div class="love" id="love">
+  <h2>Anusrii 💖</h2>
+  <p>
+    Happy Valentine’s Day ❤️<br><br>
+    This little website exists for one reason only —<br>
+    to ask you something from my heart 💗<br><br>
+    No matter the distance,<br>
+    no matter the time,<br>
+    you are incredibly special to me 🌸<br><br>
+    Will you be my Valentine? 💘
+  </p>
 </div>
 
 <script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const intro = document.getElementById("intro");
+const love = document.getElementById("love");
 
-/* Navigation */
-function next(num){
-  document.querySelectorAll(".screen")
-    .forEach(s=>s.classList.remove("active"));
-  document.getElementById("s"+num).classList.add("active");
+// Move NO button
+noBtn.addEventListener("mouseover", () => {
+  noBtn.style.position = "absolute";
+  noBtn.style.top = Math.random() * 80 + "%";
+  noBtn.style.left = Math.random() * 80 + "%";
+});
+
+// YES click
+yesBtn.addEventListener("click", () => {
+  intro.style.display = "none";
+  love.style.display = "block";
+  createHearts();
+});
+
+// Hearts generator
+function createHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }, 400);
 }
-
-/* Start */
-function start(){
-  document.getElementById("music").play();
-  next(2);
-  spawn();
-}
-
-/* Moving No button */
-function moveBtn(btn){
-  btn.style.position="absolute";
-  btn.style.top=Math.random()*80+"%";
-  btn.style.left=Math.random()*80+"%";
-}
-
-/* Gift popup */
-function gift(msg){ alert(msg); }
-
-/* Floating hearts/roses */
-function spawn(){
-  setInterval(()=>{
-    const el=document.createElement("div");
-    el.className="float";
-    el.innerText=Math.random()>0.5?"🌹":"💖";
-    el.style.left=Math.random()*100+"vw";
-    document.body.appendChild(el);
-    setTimeout(()=>el.remove(),7000);
-  },500);
-}
-
-/* Typing Effect */
-const text="Anusrii 🌸\nHappy Rose Day 🌹\nYou make days brighter and smiles warmer ✨";
-let i=0;
-function type(){
-  if(i<text.length){
-    document.getElementById("typed").innerHTML+=text.charAt(i);
-    i++;
-    setTimeout(type,40);
-  }
-}
-setTimeout(type,6000);
-
-/* Countdown */
-const target=new Date();
-target.setDate(target.getDate()+1);
-
-setInterval(()=>{
-  const now=new Date();
-  const diff=target-now;
-  const h=Math.floor(diff/1000/60/60);
-  const m=Math.floor(diff/1000/60)%60;
-  const s=Math.floor(diff/1000)%60;
-  document.getElementById("count").innerText=
-  "Next surprise in: "+h+"h "+m+"m "+s+"s";
-},1000);
-
-/* Fireworks */
-const c=document.getElementById("fireworks");
-const ctx=c.getContext("2d");
-c.width=window.innerWidth;
-c.height=window.innerHeight;
-
-function fire(){
-  const x=Math.random()*c.width;
-  const y=Math.random()*c.height/2;
-  for(let i=0;i<30;i++){
-    ctx.fillRect(x+Math.random()*50,y+Math.random()*50,2,2);
-  }
-}
-setInterval(fire,800);
-
 </script>
 
 </body>
